@@ -28,11 +28,11 @@ export default async function Home() {
 
   // console.log(LogoSmall.src);
   return (
-    <div>
-      <div>
-        <div className="border-foreground flex h-[5rem] flex-row items-center justify-center border border-solid">
-          <div className="text-foreground font-heading mr-auto text-[2rem]">
-            ЖУРНАЛ СУЧАСНОГО УКРАЇНСЬКОГО МИСТЕЦТВА
+    <div className="w-screen overflow-x-hidden">
+      <div className="flex h-screen flex-col justify-between">
+        <div className="border-foreground flex flex-row items-center justify-center border-b border-solid py-2">
+          <div className="text-foreground font-heading mr-auto pl-12 text-[2rem] leading-[2.625rem]">
+            {"журнал сучасного українського мистецтва".toLocaleUpperCase()}
           </div>
           <div className="flex flex-row gap-8 pr-8">
             <div className="flex h-[4.25rem] w-[3.19rem] flex-col items-center justify-center gap-1">
@@ -57,79 +57,89 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div>
-          <div className="bg-primary flex h-[15.125rem] flex-row content-center justify-center">
+        <div className="mb-auto">
+          <div className="bg-primary flex flex-row content-center justify-center gap-7 pb-[2.62rem] pt-[3.25rem]">
             <Image
               className="h-[9.25rem] w-[13.5rem]"
               alt="Logo"
               src={LogoMedium as string}
             ></Image>
 
-            <div className="font-fancy mt-12 text-[6rem]">Медова Птаха</div>
+            <p className="font-fancy mt-12 text-[6rem]">Медова Птаха</p>
           </div>
-          <div>
-            <div>
+          <div className="px-12 pb-32 pt-16">
+            <div className="flex flex-row items-center gap-12">
+              <div className="text-[4rem]">Випуски</div>
+              <button className="flex items-center rounded-[1.1875rem] bg-black px-8">
+                <p className="py-2 text-white">Отримати повнi версiї творiв</p>
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between gap-8 pt-4">
               <div>
-                <div />
-                <div>вип. 1</div>
+                <div className="h-[14.25rem] w-[14.25rem] bg-black "></div>
+                <div className="text-2xl">вип. 1</div>
               </div>
               <div>
-                <div />
-                <div>вип. 2</div>
+                <div className="h-[14.25rem] w-[14.25rem] bg-black "></div>
+                <div className="text-2xl">вип. 2</div>
               </div>
               <div>
-                <div />
-                <div>вип. 3</div>
+                <div className="h-[14.25rem] w-[14.25rem] bg-black "></div>
+                <div className="text-2xl">вип. 3</div>
               </div>
               <div>
-                <div />
-                <div>вип. 4</div>
+                <div className="h-[14.25rem] w-[14.25rem] bg-black "></div>
+                <div className="text-2xl">вип. 4</div>
               </div>
             </div>
-            <div>
-              <div>Отримати повнi версiї творiв</div>
-            </div>
-            <div>Випуски</div>
           </div>
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet, duo lorem quodsi discere ne. Labitur
-              minimum laboramus duo ea, cum vidisse persius ad. An vis diam
-              utroque luptatum, cu vim eirmod debitis vituperata.
-            </p>
-            <div>Що таке Медова Птаха</div>
+          <div className="pb-32 pl-12">
+            <div className="text-[4rem]">Що таке Медова Птаха</div>
+            <div className="pt-4 text-2xl">
+              <p>
+                Медова Птаха — це онлайн-журнал сучасного українського
+                мистецтва, метою якого є надання можливості авторам-початківцям
+                публікації своїх творів для широкого загалу.
+              </p>
+              <p>
+                Наразі наші випуски містять художні, поетичні та прозові твори,
+                але в майбутньому в наших випусках Ви зможете знайти твори усіх
+                видів візуального мистецтва.
+              </p>
+            </div>
           </div>
-          <div>
-            <div>
-              <div>
-                <div />
-                <div>Iван Iванов</div>
+          <div className="pb-32 pl-12">
+            <div className="text-[4rem]">Нашi автори</div>
+            <div className="flex items-center justify-between gap-8 pt-4">
+              <div className="flex flex-col items-center justify-center">
+                <div className="h-[14.25rem] w-[14.25rem] rounded-full bg-black"></div>
+                <div className="pt-4 text-2xl">Иван Иванов</div>
               </div>
-              <div>
-                <div />
-                <div>Iван Iванов</div>
+              <div className="flex flex-col items-center justify-center">
+                <div className="h-[14.25rem] w-[14.25rem] rounded-full bg-black"></div>
+                <div className="pt-4 text-2xl">Иван Иванов</div>
               </div>
-              <div>
-                <div />
-                <div>Iван Iванов</div>
+              <div className="flex flex-col items-center justify-center">
+                <div className="h-[14.25rem] w-[14.25rem] rounded-full bg-black"></div>
+                <div className="pt-4 text-2xl">Иван Иванов</div>
               </div>
-              <div>
-                <div />
-                <div>Iван Iванов</div>
+              <div className="flex flex-col items-center justify-center">
+                <div className="h-[14.25rem] w-[14.25rem] rounded-full bg-black"></div>
+                <div className="pt-4 text-2xl">Иван Иванов</div>
               </div>
-              <div>
-                <div />
-                <div>Iван Iванов</div>
+              <div className="flex flex-col items-center justify-center">
+                <div className="h-[14.25rem] w-[14.25rem] rounded-full bg-black"></div>
+                <div className="pt-4 text-2xl">Иван Иванов</div>
               </div>
-              <div>
-                <div />
-                <div>Iван Iванов</div>
+              <div className="flex flex-col items-center justify-center">
+                <div className="h-[14.25rem] w-[14.25rem] rounded-full bg-black"></div>
+                <div className="pt-4 text-2xl">Иван Иванов</div>
               </div>
             </div>
-            <div>Нашi автори</div>
           </div>
         </div>
-        <footer className="sticky flex flex-col items-center justify-center gap-[0.5rem]">
+        <footer className="border-foreground sticky flex flex-col items-center justify-center gap-[0.5rem] border-t border-solid py-4">
           <a href={`mailto:${contactEmail}`} target="_blank">
             {contactEmail}
           </a>

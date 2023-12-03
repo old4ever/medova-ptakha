@@ -25,7 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       {/* <body className={`font-sans ${inter.variable}`}> */}
-      <body className={cn("grainy min-h-screen antialiased", inter.variable)}>
+      <body
+        className={cn(
+          "grainy font-heading min-h-screen antialiased",
+          inter.variable,
+        )}
+      >
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>
