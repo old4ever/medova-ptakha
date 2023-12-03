@@ -49,6 +49,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        heading: "JetBrainsMono",
+        body: "Rubik",
+        fancy: "KrasnopysChebanyk",
+      },
       maxWidth: {
         "8xl": "1408px",
       },

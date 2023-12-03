@@ -7,6 +7,11 @@
   src: url(../../public/JetBrainsMono-Regular.woff2);
 }
 
+@font-face {
+  font-family: "KrasnopysChebanyk";
+  src: url(../../public/KrasnopysChebanyk-Regular.ttf);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
