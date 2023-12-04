@@ -50,7 +50,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: "JetBrainsMono",
+        // heading: "JetBrainsMono",
+        heading: "Alegreya Sans",
         body: "Rubik",
         fancy: "KrasnopysChebanyk",
       },
