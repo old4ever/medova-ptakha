@@ -56,10 +56,23 @@ const Volume: React.FC<VolumeProps> = ({
 };
 
 export default function Home() {
-  const volumesCount = 5;
+  // const volumesCount = 5;
 
   const contactEmail = "medovaptakha@gmail.com";
   // const hello = await api.post.hello.query({ text:"from tRPC"});
+
+  const authorPlaceholder = (
+    <div className="flex flex-col items-center justify-center">
+      <Image
+        className="aspect-square h-full w-full rounded-full border border-black object-cover object-top"
+        height={128}
+        width={128}
+        alt="Profile Picture"
+        src={PlaceholderAvatar}
+      />
+      <div>Автор 1</div>
+    </div>
+  );
 
   // console.log(LogoSmall.src);
   return (
@@ -163,8 +176,8 @@ export default function Home() {
                   <Volume isLead={false} img={Volume2} volumeNumber={2} />
                   <Volume isLead={false} img={Volume2} volumeNumber={3} />
                   <Volume isLead={false} img={Volume2} volumeNumber={4} />
-                  <Volume isLead={false} img={Volume2} volumeNumber={5} />
-                  <Volume isLead={false} img={Volume2} volumeNumber={6} />
+                  {/* <Volume isLead={false} img={Volume2} volumeNumber={5} /> */}
+                  {/* <Volume isLead={false} img={Volume2} volumeNumber={6} /> */}
                 </div>
                 <button
                   onClick={(e) => {
@@ -179,7 +192,7 @@ export default function Home() {
           </div>
         </div>
         <div className="pt-8">
-          <div className="">Що таке Медова Птаха</div>
+          <div className="text-4xl">Що таке Медова Птаха</div>
           <div className="max-w-prose">
             <p>
               Медова Птаха — це онлайн-журнал сучасного українського мистецтва,
@@ -188,37 +201,51 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div>
-          <div className="">Нашi автори</div>
-          <div>
-            <div>
-              <div></div>
-              <div>Иван Иванов</div>
+        <button>Надiслати роботу</button>
+        <div className="pt-8">
+          <div className="text-4xl">Нашi автори</div>
+          <div className="flex items-center justify-center gap-1">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                document.getElementById("wrapper")?.scrollBy(-150, 0);
+              }}
+            >
+              <span className="text-4xl"></span>
+            </button>
+            <div
+              id="wrapper1"
+              className="grid auto-cols-[15%] grid-flow-col gap-4"
+            >
+              {[
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+                authorPlaceholder,
+              ].map((ele) => {
+                return ele;
+              })}
             </div>
-            <div>
-              <div></div>
-              <div>Иван Иванов</div>
-            </div>
-            <div>
-              <div></div>
-              <div>Иван Иванов</div>
-            </div>
-            <div>
-              <div></div>
-              <div>Иван Иванов</div>
-            </div>
-            <div>
-              <div></div>
-              <div>Иван Иванов</div>
-            </div>
-            <div>
-              <div></div>
-              <div>Иван Иванов</div>
-            </div>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                document.getElementById("wrapper")?.scrollBy(150, 0);
+              }}
+            >
+              <span className="text-4xl"></span>
+            </button>
           </div>
+          <div className=""></div>
         </div>
 
-        <footer>
+        <footer className="flex flex-col items-center justify-center pt-8">
           <a href={`mailto:${contactEmail}`} target="_blank">
             {contactEmail}
           </a>
