@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       {/* <body className={`font-sans ${alegreya.variable}`}> */}
-      <body className={cn("grainy antialiased", alegreya.variable)}>
+      <body
+        className={cn("grainy font-heading antialiased", alegreya.variable)}
+      >
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>

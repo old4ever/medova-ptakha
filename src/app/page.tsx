@@ -1,25 +1,63 @@
+"use client";
 import Link from "next/link";
 
 import LogoSmall from "public/logo-s.svg";
 import LogoMedium from "public/logo-m.svg";
 import PlaceholderAvatar from "public/placeholder-ava.jpg";
-
+import Volume1 from "public/volume-1.jpg";
+import Volume2 from "public/volume-2.jpeg";
 import { CreatePost } from "~/app/_components/create-post";
 import { api } from "~/trpc/server";
 import MaxWidthWrapper from "./_components/MaxWidthWrapper";
 import Image from "next/image";
 import { object } from "zod";
+import type { StaticImageData } from "next/image";
 
-const Volume = () => {
+import Flicking from "@egjs/react-flicking";
+import "@egjs/react-flicking/dist/flicking.css";
+import { useState } from "react";
+
+interface VolumeProps {
+  isLead: boolean;
+  img: string | StaticImageData;
+  alt?: string;
+  volumeNumber?: number;
+  className?: string;
+}
+
+const Volume: React.FC<VolumeProps> = ({
+  img,
+  alt,
+  // isLead,
+  volumeNumber = 1,
+  className,
+}) => {
+  // let dimensions = "basis-[100%]";
+  // if (isLead) {
+  //   dimensions = "basis-[120%]";
+  // }
   return (
-    <div>
-      <div></div>
-      <div>вип. 1</div>
+    <div className={className}>
+      {/* <div className={`${dimensions} flex flex-col`}> */}
+      <div className="flex flex-col">
+        <div>
+          <Image
+            src={img}
+            alt={alt ? alt : "volume cover"}
+            placeholder="blur"
+            className="aspect-square h-full w-full object-cover object-top"
+            // objectPosition="center"
+          ></Image>
+        </div>
+        <div>{`вип. ${volumeNumber}`}</div>
+      </div>
     </div>
   );
 };
 
-export default async function Home() {
+export default function Home() {
+  const volumesCount = 5;
+
   const contactEmail = "medovaptakha@gmail.com";
   // const hello = await api.post.hello.query({ text:"from tRPC"});
 
@@ -38,7 +76,7 @@ export default async function Home() {
               className="flex flex-col items-center justify-center px-2"
             >
               <Image
-                className="h-8"
+                className="h-8 rounded-full border border-black"
                 height={32}
                 width={32}
                 alt="Profile Picture"
@@ -54,7 +92,7 @@ export default async function Home() {
               className="flex flex-col items-center justify-center  px-2"
             >
               <Image
-                className="h-8"
+                className="h-8 rounded-full border border-black"
                 height={32}
                 width={32}
                 alt="Menu"
@@ -67,68 +105,119 @@ export default async function Home() {
           </div>
         </div>
       </nav>
-      <MaxWidthWrapper>
-        <div>
-          <div>
-            <p>Медова</p>
-            <Image alt="Logo" src={LogoMedium as string}></Image>
-            <p>Птаха</p>
-          </div>
-          <div>
-            <div>
-              <div className="">Випуски</div>
-              <button>
-                <p>Отримати повнi версiї творiв</p>
-              </button>
-            </div>
 
-            <div>
-              <Volume />
-              <Volume />
-              <Volume />
-              <Volume />
-            </div>
+      <div className="flex items-center justify-center bg-primary font-fancy">
+        <span className="mr-[2vw] mt-8 text-[8vw]">Медова</span>
+        <div className="md:shrink-0">
+          <Image
+            className="h-12 w-full object-cover sm:h-full sm:w-32"
+            height={128}
+            width={128}
+            alt="Logo"
+            src={LogoMedium as string}
+          ></Image>
+        </div>
+        <span className=" mt-8 text-[8vw]">Птаха</span>
+      </div>
+      <MaxWidthWrapper>
+        <div className="pt-8">
+          <div className="flex justify-between">
+            <div className="text-4xl">Випуски</div>
+            <button>
+              <p className="underline">Отримати повні версії випусків</p>
+            </button>
           </div>
-          <div>
-            <div className="">Що таке Медова Птаха</div>
-            <div>
-              <p className="max-w-prose">
-                Медова Птаха — це онлайн-журнал сучасного українського
-                мистецтва, метою якого є надання можливості авторам-початківцям
-                публікації своїх творів для широкого загалу.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="">Нашi автори</div>
-            <div>
-              <div>
-                <div></div>
-                <div>Иван Иванов</div>
-              </div>
-              <div>
-                <div></div>
-                <div>Иван Иванов</div>
-              </div>
-              <div>
-                <div></div>
-                <div>Иван Иванов</div>
-              </div>
-              <div>
-                <div></div>
-                <div>Иван Иванов</div>
-              </div>
-              <div>
-                <div></div>
-                <div>Иван Иванов</div>
-              </div>
-              <div>
-                <div></div>
-                <div>Иван Иванов</div>
+
+          <div className="flex">
+            <Volume
+              className="basis-[30%]"
+              isLead={true}
+              img={Volume1}
+              volumeNumber={1}
+            />
+
+            <div className=" flex-grow basis-[40%]">
+              {/*   <div id="carousel" className="scroll-smooth"> */}
+              {/* <div className="grid grid-flow-col grid-cols-[1fr_5fr_5fr_5fr_1fr] gap-4"> */}
+              {/* <div className="grid grid-flow-col grid-cols-[1fr_1fr_1fr] gap-4"> */}
+              {/* <div className="grid grid-flow-col grid-cols-[repeat(3,33%)] gap-4"> */}
+              {/* <div className="grid grid-flow-col gap-4"> */}
+              {/* <div className="grid columns-3 grid-flow-col gap-4"> */}
+              {/* <div
+                className={`grid grid-flow-col grid-cols-[1fr,_repeat(${volumesCount},30%),_1fr] gap-4 overflow-x-scroll`}
+              > */}
+              {/* <div className="grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll"> */}
+              <div className="flex items-center justify-center gap-1">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    document.getElementById("wrapper")?.scrollBy(-150, 0);
+                  }}
+                >
+                  <span className="text-4xl"></span>
+                </button>
+                <div
+                  id="wrapper"
+                  className="grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll"
+                >
+                  <Volume isLead={false} img={Volume2} volumeNumber={2} />
+                  <Volume isLead={false} img={Volume2} volumeNumber={3} />
+                  <Volume isLead={false} img={Volume2} volumeNumber={4} />
+                  <Volume isLead={false} img={Volume2} volumeNumber={5} />
+                  <Volume isLead={false} img={Volume2} volumeNumber={6} />
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    document.getElementById("wrapper")?.scrollBy(150, 0);
+                  }}
+                >
+                  <span className="text-4xl"></span>
+                </button>
               </div>
             </div>
           </div>
         </div>
+        <div className="pt-8">
+          <div className="">Що таке Медова Птаха</div>
+          <div className="max-w-prose">
+            <p>
+              Медова Птаха — це онлайн-журнал сучасного українського мистецтва,
+              метою якого є надання можливості авторам-початківцям публікації
+              своїх творів для широкого загалу.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div className="">Нашi автори</div>
+          <div>
+            <div>
+              <div></div>
+              <div>Иван Иванов</div>
+            </div>
+            <div>
+              <div></div>
+              <div>Иван Иванов</div>
+            </div>
+            <div>
+              <div></div>
+              <div>Иван Иванов</div>
+            </div>
+            <div>
+              <div></div>
+              <div>Иван Иванов</div>
+            </div>
+            <div>
+              <div></div>
+              <div>Иван Иванов</div>
+            </div>
+            <div>
+              <div></div>
+              <div>Иван Иванов</div>
+            </div>
+          </div>
+        </div>
+
         <footer>
           <a href={`mailto:${contactEmail}`} target="_blank">
             {contactEmail}
