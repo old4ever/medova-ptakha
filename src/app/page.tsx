@@ -132,7 +132,7 @@ export default function Home() {
         </div>
         <span className=" mt-8 text-[8vw]">Птаха</span>
       </div>
-      <MaxWidthWrapper>
+      <MaxWidthWrapper className="flex flex-col">
         <div className="pt-8">
           <div className="flex justify-between">
             <div className="text-4xl">Випуски</div>
@@ -141,7 +141,7 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="flex">
+          <div className="flex pt-4">
             <Volume
               className="basis-[30%]"
               isLead={true}
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
         <div className="pt-8">
           <div className="text-4xl">Що таке Медова Птаха</div>
-          <div className="max-w-prose">
+          <div className="max-w-prose pt-4">
             <p>
               Медова Птаха — це онлайн-журнал сучасного українського мистецтва,
               метою якого є надання можливості авторам-початківцям публікації
@@ -201,14 +201,18 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <button>Надiслати роботу</button>
+        <div className="mx-auto pt-8">
+          <button className=" rounded-full border border-black bg-primary px-24 py-4">
+            Надiслати роботу
+          </button>
+        </div>
         <div className="pt-8">
           <div className="text-4xl">Нашi автори</div>
-          <div className="flex items-center justify-center gap-1">
+          <div className="flex items-center justify-center gap-1 pt-4">
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                document.getElementById("wrapper")?.scrollBy(-150, 0);
+                document.getElementById("wrapper1")?.scrollBy(-150, 0);
               }}
             >
               <span className="text-4xl"></span>
@@ -236,7 +240,7 @@ export default function Home() {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                document.getElementById("wrapper")?.scrollBy(150, 0);
+                document.getElementById("wrapper1")?.scrollBy(150, 0);
               }}
             >
               <span className="text-4xl"></span>
