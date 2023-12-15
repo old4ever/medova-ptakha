@@ -61,19 +61,6 @@ export default function Home() {
   const contactEmail = "medovaptakha@gmail.com";
   // const hello = await api.post.hello.query({ text:"from tRPC"});
 
-  const authorPlaceholder = (
-    <div className="flex flex-col items-center justify-center">
-      <Image
-        className="aspect-square h-full w-full rounded-full border border-black object-cover object-top"
-        height={128}
-        width={128}
-        alt="Profile Picture"
-        src={PlaceholderAvatar}
-      />
-      <div>Автор 1</div>
-    </div>
-  );
-
   // console.log(LogoSmall.src);
   return (
     <>
@@ -162,17 +149,23 @@ export default function Home() {
               {/* <div className="grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll"> */}
               <div className="flex items-center justify-center gap-1">
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    document.getElementById("wrapper")?.scrollBy(-150, 0);
+                  onClick={(ev) => {
+                    ev.stopPropagation();
+                    if (ev.target instanceof Element) {
+                      ev.target
+                        .closest("div")
+                        ?.querySelector(".wrapper")
+                        ?.scrollBy({
+                          top: 0,
+                          left: -250,
+                          behavior: "smooth",
+                        });
+                    }
                   }}
                 >
                   <span className="text-4xl"></span>
                 </button>
-                <div
-                  id="wrapper"
-                  className="grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll"
-                >
+                <div className="wrapper grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll">
                   <Volume isLead={false} img={Volume2} volumeNumber={2} />
                   <Volume isLead={false} img={Volume2} volumeNumber={3} />
                   <Volume isLead={false} img={Volume2} volumeNumber={4} />
@@ -180,9 +173,18 @@ export default function Home() {
                   {/* <Volume isLead={false} img={Volume2} volumeNumber={6} /> */}
                 </div>
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    document.getElementById("wrapper")?.scrollBy(150, 0);
+                  onClick={(ev) => {
+                    ev.stopPropagation();
+                    if (ev.target instanceof Element) {
+                      ev.target
+                        .closest("div")
+                        ?.querySelector(".wrapper")
+                        ?.scrollBy({
+                          top: 0,
+                          left: 250,
+                          behavior: "smooth",
+                        });
+                    }
                   }}
                 >
                   <span className="text-4xl"></span>
@@ -210,37 +212,56 @@ export default function Home() {
           <div className="text-4xl">Нашi автори</div>
           <div className="flex items-center justify-center gap-1 pt-4">
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                document.getElementById("wrapper1")?.scrollBy(-150, 0);
+              onClick={(ev) => {
+                ev.stopPropagation();
+                if (ev.target instanceof Element) {
+                  const elementParent = ev.target
+                    .closest("div")
+                    ?.querySelector(".wrapper");
+
+                  elementParent?.scrollBy({
+                    top: 0,
+                    left: +`-${elementParent.clientWidth}`,
+                    behavior: "smooth",
+                  });
+                }
               }}
             >
               <span className="text-4xl"></span>
             </button>
-            <div
-              id="wrapper1"
-              className="grid auto-cols-[15%] grid-flow-col gap-4"
-            >
-              {[
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-                authorPlaceholder,
-              ].map((ele) => {
-                return ele;
+            <div className="wrapper grid auto-cols-[15%] grid-flow-col gap-4 overflow-x-scroll">
+              {Array.from(Array(15)).map(() => {
+                return (
+                  <div
+                    className="flex flex-col items-center justify-center"
+                    key={crypto.randomUUID()}
+                  >
+                    <Image
+                      className="aspect-square h-full w-full rounded-full border border-black object-cover object-top"
+                      height={128}
+                      width={128}
+                      alt="Profile Picture"
+                      src={PlaceholderAvatar}
+                    />
+                    <div>{`Автор ${Math.floor(Math.random() * 10)}`}</div>
+                  </div>
+                );
               })}
             </div>
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                document.getElementById("wrapper1")?.scrollBy(150, 0);
+              onClick={(ev) => {
+                ev.stopPropagation();
+                if (ev.target instanceof Element) {
+                  const elementParent = ev.target
+                    .closest("div")
+                    ?.querySelector(".wrapper");
+
+                  elementParent?.scrollBy({
+                    top: 0,
+                    left: +`${elementParent.clientWidth}`,
+                    behavior: "smooth",
+                  });
+                }
               }}
             >
               <span className="text-4xl"></span>
