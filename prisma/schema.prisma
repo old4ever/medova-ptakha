@@ -4,17 +4,40 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model Volume {
+  id           Int      @id @default(autoincrement())
+  picture      String   @default("https://picsum.photos/200")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  authorsNames Author[]
+}
 
-    @@index([name])
+model Author {
+  id              String   @id @default(cuid())
+  name            String
+  email           String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  volumesAuthored Volume?  @relation(fields: [volumeId], references: [id])
+  volumeId        Int?
+
+  @@index([volumeId])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  role      String   @default("user")
+
+  // @@index([id])
 }
