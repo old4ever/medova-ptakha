@@ -6,6 +6,8 @@ import { cookies } from "next/headers";
 import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 const alegreya = Alegreya({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -30,6 +32,7 @@ export default function RootLayout({
       >
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
+          <SpeedInsights />
         </TRPCReactProvider>
       </body>
     </html>
