@@ -195,7 +195,7 @@ export default function Home() {
         </div>
         <div className="pt-8">
           <div className="text-4xl">Що таке Медова Птаха</div>
-          <div className="max-w-prose pt-4">
+          <div className="pt-4">
             <p>
               Медова Птаха — це онлайн-журнал сучасного українського мистецтва,
               метою якого є надання можливості авторам-початківцям публікації
