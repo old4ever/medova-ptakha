@@ -6,7 +6,7 @@ import LogoMedium from "public/logo-m.svg";
 import PlaceholderAvatar from "public/placeholder-ava.jpg";
 import Volume1 from "public/volume-1.jpg";
 import Volume2 from "public/volume-2.jpeg";
-import { CreatePost } from "~/app/_components/create-post";
+// import { CreatePost } from "~/app/_components/create-post";
 import { api } from "~/trpc/server";
 import MaxWidthWrapper from "./_components/MaxWidthWrapper";
 import Image from "next/image";
