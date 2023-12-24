@@ -255,7 +255,7 @@ export default function Home() {
             >
               <LeftArrow />
             </button>
-            <div className="wrapper grid auto-cols-[15%] grid-flow-col gap-4 overflow-x-scroll">
+            <div className="wrapper grid auto-cols-[33%] grid-flow-col gap-4 overflow-x-scroll sm:auto-cols-[15%]">
               {Array.from(Array(15)).map((_el, index) => {
                 return (
                   <div
@@ -263,7 +263,7 @@ export default function Home() {
                     key={index}
                   >
                     <Image
-                      className="aspect-square h-full w-full rounded-full border border-black object-cover object-top"
+                      className="aspect-square w-full rounded-full border border-black object-cover object-top"
                       height={128}
                       width={128}
                       alt="Profile Picture"
