@@ -15,6 +15,7 @@ import type { StaticImageData } from "next/image";
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
 import { useState } from "react";
+import { getUserSession } from "~/lib/session";
 import ScrollRightButton from "./_components/scrollRight";
 import ScrollLeftButton from "./_components/scrollLeft";
 
@@ -57,7 +58,10 @@ const Volume: React.FC<VolumeProps> = ({
 };
 
 export default async function Home() {
-  
+  const user = await getUserSession();
+
+  console.log(user);
+
   // const volumesCount = 5;
 
   const contactEmail = "medovaptakha@gmail.com";
@@ -82,7 +86,7 @@ export default async function Home() {
                 height={32}
                 width={32}
                 alt="Profile Picture"
-                src={PlaceholderAvatar}
+                src={user.image ? user.image : PlaceholderAvatar}
               />
               <span className="self-center whitespace-nowrap">
                 {"ПРОФIЛЬ".toLocaleUpperCase()}
