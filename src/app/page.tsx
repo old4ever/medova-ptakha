@@ -86,7 +86,7 @@ export default async function Home() {
                 height={32}
                 width={32}
                 alt="Profile Picture"
-                src={user.image ? user.image : PlaceholderAvatar}
+                src={user?.image ? user.image : PlaceholderAvatar}
               />
               <span className="self-center whitespace-nowrap">
                 {"ПРОФIЛЬ".toLocaleUpperCase()}
