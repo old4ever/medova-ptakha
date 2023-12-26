@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 
 import LogoSmall from "public/logo-s.svg";
@@ -16,6 +15,8 @@ import type { StaticImageData } from "next/image";
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
 import { useState } from "react";
+import ScrollRightButton from "./_components/scrollRight";
+import ScrollLeftButton from "./_components/scrollLeft";
 
 interface VolumeProps {
   isLead: boolean;
@@ -55,33 +56,8 @@ const Volume: React.FC<VolumeProps> = ({
   );
 };
 
-const LeftArrow = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="32"
-      width="16"
-      viewBox="0 0 256 512"
-    >
-      <path d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z" />
-    </svg>
-  );
-};
-
-const RightArrow = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="32"
-      width="16"
-      viewBox="0 0 256 512"
-    >
-      <path d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z" />
-    </svg>
-  );
-};
-
-export default function Home() {
+export default async function Home() {
+  
   // const volumesCount = 5;
 
   const contactEmail = "medovaptakha@gmail.com";
@@ -174,23 +150,7 @@ export default function Home() {
               > */}
               {/* <div className="grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll"> */}
               <div className="flex items-center justify-center gap-1">
-                <button
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                    if (ev.target instanceof Element) {
-                      ev.target
-                        .closest("div")
-                        ?.querySelector(".wrapper")
-                        ?.scrollBy({
-                          top: 0,
-                          left: -250,
-                          behavior: "smooth",
-                        });
-                    }
-                  }}
-                >
-                  <LeftArrow />
-                </button>
+                <ScrollLeftButton />
                 <div className="wrapper grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll">
                   <Volume isLead={false} img={Volume2} volumeNumber={2} />
                   <Volume isLead={false} img={Volume2} volumeNumber={3} />
@@ -198,23 +158,7 @@ export default function Home() {
                   {/* <Volume isLead={false} img={Volume2} volumeNumber={5} /> */}
                   {/* <Volume isLead={false} img={Volume2} volumeNumber={6} /> */}
                 </div>
-                <button
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                    if (ev.target instanceof Element) {
-                      ev.target
-                        .closest("div")
-                        ?.querySelector(".wrapper")
-                        ?.scrollBy({
-                          top: 0,
-                          left: 250,
-                          behavior: "smooth",
-                        });
-                    }
-                  }}
-                >
-                  <RightArrow />
-                </button>
+                <ScrollRightButton />
               </div>
             </div>
           </div>
@@ -237,24 +181,7 @@ export default function Home() {
         <div className="pt-8">
           <div className="text-4xl">Нашi автори</div>
           <div className="flex items-center justify-center gap-1 pt-4">
-            <button
-              onClick={(ev) => {
-                ev.stopPropagation();
-                if (ev.target instanceof Element) {
-                  const elementParent = ev.target
-                    .closest("div")
-                    ?.querySelector(".wrapper");
-
-                  elementParent?.scrollBy({
-                    top: 0,
-                    left: +`-${elementParent.clientWidth}`,
-                    behavior: "smooth",
-                  });
-                }
-              }}
-            >
-              <LeftArrow />
-            </button>
+            <ScrollLeftButton />
             <div className="wrapper grid auto-cols-[33%] grid-flow-col gap-4 overflow-x-scroll sm:auto-cols-[15%]">
               {Array.from(Array(15)).map((_el, index) => {
                 return (
@@ -274,24 +201,7 @@ export default function Home() {
                 );
               })}
             </div>
-            <button
-              onClick={(ev) => {
-                ev.stopPropagation();
-                if (ev.target instanceof Element) {
-                  const elementParent = ev.target
-                    .closest("div")
-                    ?.querySelector(".wrapper");
-
-                  elementParent?.scrollBy({
-                    top: 0,
-                    left: +`${elementParent.clientWidth}`,
-                    behavior: "smooth",
-                  });
-                }
-              }}
-            >
-              <RightArrow />
-            </button>
+            <ScrollRightButton />
           </div>
           <div className=""></div>
         </div>
