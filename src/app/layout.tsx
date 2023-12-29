@@ -15,7 +15,7 @@ const alegreya = Alegreya({
 
 export const metadata = {
   title: "Медова Птаха",
-  description: "онлайн-журнал сучасного українського мистецтва",
+  description: "Онлайн-журнал сучасного українського мистецтва",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
