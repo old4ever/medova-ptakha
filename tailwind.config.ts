@@ -49,6 +49,7 @@ export default {
       },
     },
     extend: {
+      screens: { xsm: "380px" },
       fontFamily: {
         // heading: "JetBrainsMono",
         heading: "Alegreya Sans",
