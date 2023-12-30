@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { env } from "~/env";
+import process from "process";
 
 // import { CreatePost } from "~/app/_components/create-post";
 import { api } from "~/trpc/server";
@@ -55,7 +56,8 @@ export default async function Home() {
   // const volumesCount = 5;
 
   if (env.NODE_ENV === "development") {
-    // console.log(user);
+    // console.log(env);
+    // console.log(process.uptime());
   }
 
   const contactEmail = "medovaptakha@gmail.com";
@@ -205,6 +207,14 @@ export default async function Home() {
             {contactEmail}
           </a>
           <p>© Онлайн журнал “Медова Птаха” 2023</p>
+          {env.NODE_ENV === "development" && (
+            <p>
+              {"Node Process started: "}
+              {new Date(
+                new Date().valueOf() - process.uptime() * 1000,
+              ).toLocaleString()}
+            </p>
+          )}
         </footer>
       </MaxWidthWrapper>
     </>
