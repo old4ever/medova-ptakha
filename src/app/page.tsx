@@ -1,40 +1,31 @@
 import Link from "next/link";
 import { env } from "~/env";
-import LogoSmall from "public/logo-s.svg";
-import LogoMedium from "public/logo-m.svg";
-import PlaceholderAvatar from "public/placeholder-ava.jpg";
-import Volume1 from "public/volume-1.jpg";
-import Volume2 from "public/volume-2.jpeg";
+
 // import { CreatePost } from "~/app/_components/create-post";
 import { api } from "~/trpc/server";
 import MaxWidthWrapper from "./_components/MaxWidthWrapper";
-import Image from "next/image";
 import { object } from "zod";
-import type { StaticImageData } from "next/image";
 
-import Flicking from "@egjs/react-flicking";
-import "@egjs/react-flicking/dist/flicking.css";
-import { useState } from "react";
 import { getUserSession } from "~/lib/session";
 import ScrollRightButton from "./_components/scrollRight";
 import ScrollLeftButton from "./_components/scrollLeft";
 import Title from "./_components/Title";
 
-interface VolumeProps {
+type VolumeProps = {
   isLead: boolean;
-  img: string | StaticImageData;
+  img: string;
   alt?: string;
   volumeNumber?: number;
   className?: string;
-}
+};
 
-const Volume: React.FC<VolumeProps> = ({
+const Volume = ({
   img,
   alt,
   // isLead,
   volumeNumber = 1,
   className,
-}) => {
+}: VolumeProps) => {
   // let dimensions = "basis-[100%]";
   // if (isLead) {
   //   dimensions = "basis-[120%]";
@@ -44,13 +35,13 @@ const Volume: React.FC<VolumeProps> = ({
       {/* <div className={`${dimensions} flex flex-col`}> */}
       <div className="flex flex-col">
         <div>
-          <Image
+          <img
             src={img}
             alt={alt ? alt : "volume cover"}
             placeholder="blur"
             className="aspect-square h-full w-full object-cover object-top"
             // objectPosition="center"
-          ></Image>
+          ></img>
         </div>
         <div>{`вип. ${volumeNumber}`}</div>
       </div>
@@ -84,12 +75,10 @@ export default async function Home() {
               target="_blank"
               className="flex flex-col items-center justify-center px-2"
             >
-              <Image
-                className="h-8 rounded-full border border-black"
-                height={32}
-                width={32}
+              <img
+                className="h-8 w-8 rounded-full border border-black"
                 alt="Profile Picture"
-                src={user?.image ? user.image : PlaceholderAvatar}
+                src={user?.image ? user.image : "/placeholder-ava.jpg"}
               />
               <span className="self-center whitespace-nowrap">
                 {"ПРОФIЛЬ".toLocaleUpperCase()}
@@ -100,12 +89,10 @@ export default async function Home() {
               target="_blank"
               className="flex flex-col items-center justify-center  px-2"
             >
-              <Image
-                className="h-8 rounded-full border border-black"
-                height={32}
-                width={32}
+              <img
+                className="h-8 w-8 rounded-full border border-black"
                 alt="Menu"
-                src={LogoSmall as string}
+                src="/logo-s.svg"
               />
               <span className="self-center whitespace-nowrap">
                 {"меню".toLocaleUpperCase()}
@@ -129,7 +116,7 @@ export default async function Home() {
             <Volume
               className="basis-[30%]"
               isLead={true}
-              img={Volume1}
+              img="/volume-1.jpg"
               volumeNumber={1}
             />
 
@@ -147,11 +134,23 @@ export default async function Home() {
               <div className="flex items-center justify-center gap-1">
                 <ScrollLeftButton />
                 <div className="wrapper grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll">
-                  <Volume isLead={false} img={Volume2} volumeNumber={2} />
-                  <Volume isLead={false} img={Volume2} volumeNumber={3} />
-                  <Volume isLead={false} img={Volume2} volumeNumber={4} />
-                  {/* <Volume isLead={false} img={Volume2} volumeNumber={5} /> */}
-                  {/* <Volume isLead={false} img={Volume2} volumeNumber={6} /> */}
+                  <Volume
+                    isLead={false}
+                    img="/volume-2.jpeg"
+                    volumeNumber={2}
+                  />
+                  <Volume
+                    isLead={false}
+                    img="/volume-2.jpeg"
+                    volumeNumber={3}
+                  />
+                  <Volume
+                    isLead={false}
+                    img="/volume-2.jpeg"
+                    volumeNumber={4}
+                  />
+                  {/* <Volume isLead={false} img="/volume-2.jpeg" volumeNumber={5} /> */}
+                  {/* <Volume isLead={false} img="/volume-2.jpeg" volumeNumber={6} /> */}
                 </div>
                 <ScrollRightButton />
               </div>
@@ -184,12 +183,12 @@ export default async function Home() {
                     className="flex flex-col items-center justify-center"
                     key={index}
                   >
-                    <Image
+                    <img
                       className="aspect-square w-full rounded-full border border-black object-cover object-top"
-                      height={128}
-                      width={128}
+                      // height={128}
+                      // width={128}
                       alt="Profile Picture"
-                      src={PlaceholderAvatar}
+                      src="/placeholder-ava.jpg"
                     />
                     <div>{`Автор ${index}`}</div>
                   </div>
