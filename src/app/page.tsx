@@ -50,16 +50,9 @@ const Volume = ({
   );
 };
 
+const isDevEnv = env.NODE_ENV === "development" || env.NODE_ENV === "test";
+
 export default async function Home() {
-  const user = await getUserSession();
-
-  // const volumesCount = 5;
-
-  if (env.NODE_ENV === "development") {
-    // console.log(env);
-    // console.log(process.uptime());
-  }
-
   const contactEmail = "medovaptakha@gmail.com";
   // const hello = await api.post.hello.query({ text:"from tRPC"});
 
@@ -74,7 +67,9 @@ export default async function Home() {
           <div className="flex justify-between">
             <div className="text-4xl">Випуски</div>
             <button>
-              <p className="underline">Отримати повні версії випусків</p>
+              <Link href={"/volumes"}>
+                <p className="underline">Отримати повні версії випусків</p>
+              </Link>
             </button>
           </div>
 
@@ -171,16 +166,19 @@ export default async function Home() {
             {contactEmail}
           </a>
           <p>© Онлайн журнал “Медова Птаха” 2023</p>
-          {env.NODE_ENV === "development" && (
-            <p>
-              {"Node Process started: "}
-              {new Date(
-                new Date().valueOf() - process.uptime() * 1000,
-              ).toLocaleString()}
-            </p>
-          )}
         </footer>
       </MaxWidthWrapper>
+      {isDevEnv && (
+        <div className="flex justify-center bg-red-400">
+          <p>
+            {/* <p className="fixed bottom-0 w-full bg-red-400"> */}
+            {"Node Process started: "}
+            {new Date(
+              new Date().valueOf() - process.uptime() * 1000,
+            ).toLocaleString()}
+          </p>
+        </div>
+      )}
     </>
   );
 }
