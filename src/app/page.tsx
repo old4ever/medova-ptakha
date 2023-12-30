@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { env } from "~/env";
 import LogoSmall from "public/logo-s.svg";
 import LogoMedium from "public/logo-m.svg";
 import PlaceholderAvatar from "public/placeholder-ava.jpg";
@@ -60,9 +60,11 @@ const Volume: React.FC<VolumeProps> = ({
 export default async function Home() {
   const user = await getUserSession();
 
-  console.log(user);
-
   // const volumesCount = 5;
+
+  if (env.NODE_ENV === "development") {
+    // console.log(user);
+  }
 
   const contactEmail = "medovaptakha@gmail.com";
   // const hello = await api.post.hello.query({ text:"from tRPC"});
