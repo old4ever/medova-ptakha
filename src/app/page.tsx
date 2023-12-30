@@ -18,6 +18,7 @@ import { useState } from "react";
 import { getUserSession } from "~/lib/session";
 import ScrollRightButton from "./_components/scrollRight";
 import ScrollLeftButton from "./_components/scrollLeft";
+import Title from "./_components/Title";
 
 interface VolumeProps {
   isLead: boolean;
@@ -114,19 +115,7 @@ export default async function Home() {
         </div>
       </nav>
 
-      <div className="flex items-center justify-center bg-primary font-fancy">
-        <span className="mr-[2vw] mt-8 text-[8vw]">Медова</span>
-        <div className="md:shrink-0">
-          <Image
-            className="h-12 w-full object-cover sm:h-full sm:w-32"
-            height={128}
-            width={128}
-            alt="Logo"
-            src={LogoMedium as string}
-          ></Image>
-        </div>
-        <span className=" mt-8 text-[8vw]">Птаха</span>
-      </div>
+      <Title />
       <MaxWidthWrapper className="flex flex-col">
         <div className="pt-8">
           <div className="flex justify-between">
