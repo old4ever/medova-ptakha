@@ -3,6 +3,12 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: "JetBrainsMono";
   src: url(../../public/JetBrainsMono-Regular.woff2);
