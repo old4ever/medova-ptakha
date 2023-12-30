@@ -7,10 +7,10 @@ import { api } from "~/trpc/server";
 import MaxWidthWrapper from "./_components/MaxWidthWrapper";
 import { object } from "zod";
 
-import { getUserSession } from "~/lib/session";
 import ScrollRightButton from "./_components/scrollRight";
 import ScrollLeftButton from "./_components/scrollLeft";
 import Title from "./_components/Title";
+import Navbar from "./_components/Navbar";
 
 type VolumeProps = {
   isLead: boolean;
@@ -66,43 +66,7 @@ export default async function Home() {
   // console.log(LogoSmall.src);
   return (
     <>
-      <nav className="border-b border-black bg-white dark:bg-gray-900">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-center px-4">
-          <span className="hidden sm:block">
-            {"журнал сучасного українського мистецтва".toLocaleUpperCase()}
-          </span>
-          <div className="flex items-center justify-center py-2 sm:ml-auto">
-            <a
-              href="https://www.google.com/"
-              target="_blank"
-              className="flex flex-col items-center justify-center px-2"
-            >
-              <img
-                className="h-8 w-8 rounded-full border border-black"
-                alt="Profile Picture"
-                src={user?.image ? user.image : "/placeholder-ava.jpg"}
-              />
-              <span className="self-center whitespace-nowrap">
-                {"ПРОФIЛЬ".toLocaleUpperCase()}
-              </span>
-            </a>
-            <a
-              href="https://www.google.com/"
-              target="_blank"
-              className="flex flex-col items-center justify-center  px-2"
-            >
-              <img
-                className="h-8 w-8 rounded-full border border-black"
-                alt="Menu"
-                src="/logo-s.svg"
-              />
-              <span className="self-center whitespace-nowrap">
-                {"меню".toLocaleUpperCase()}
-              </span>
-            </a>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       <Title />
       <MaxWidthWrapper className="flex flex-col">
