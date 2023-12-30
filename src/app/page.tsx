@@ -136,7 +136,7 @@ export default async function Home() {
             </button>
           </div>
 
-          <div className="flex pt-4">
+          <div className="flex gap-2 pt-4">
             <Volume
               className="basis-[30%]"
               isLead={true}
