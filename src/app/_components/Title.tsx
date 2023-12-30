@@ -1,15 +1,15 @@
-import LogoMedium from "public/logo-m.svg";
+// import LogoMedium from "public/logo-m.svg";
 import { env } from "~/env";
 
-type LogoMedium = {
-  src: string;
-  height: number;
-  width: number;
-  blurWidth: number;
-  blurHeight: number;
-};
+// type LogoMedium = {
+//   src: string;
+//   height: number;
+//   width: number;
+//   blurWidth: number;
+//   blurHeight: number;
+// };
 
-const LogoMediumTyped = LogoMedium as LogoMedium;
+// const LogoMediumTyped = LogoMedium as LogoMedium;
 
 const Title = ({ subheading }: { subheading?: string }) => {
   // const logoDirtyfix = subheading ? "mt-4 md:shrink-0" : "mt-2 md:shrink-0";
@@ -25,7 +25,7 @@ const Title = ({ subheading }: { subheading?: string }) => {
           Медова
         </span>
         <div className="min-w-[6rem] sm:min-w-[7rem] md:min-w-[8rem] lg:min-w-[9rem]">
-          <img className="w-full" alt="Logo" src={LogoMediumTyped.src}></img>
+          <img className="w-full" alt="Logo" src="/logo-m.svg"></img>
         </div>
         <span className="pl-1 pt-4 text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
           Птаха
