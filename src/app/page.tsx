@@ -7,8 +7,8 @@ import { api } from "~/trpc/server";
 import MaxWidthWrapper from "../components/MaxWidthWrapper";
 import { object } from "zod";
 
-import ScrollRightButton from "../components/scrollRight";
-import ScrollLeftButton from "../components/scrollLeft";
+import ScrollRightButton from "../components/ui/scrollRightArrow";
+import ScrollLeftButton from "../components/ui/scrollLeftArrow";
 import Title from "../components/Title";
 // import Navbar from "../components/Navbar";
 import Navbar from "~/components/Navbar";
