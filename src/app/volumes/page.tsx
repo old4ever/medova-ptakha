@@ -3,8 +3,8 @@ import { env } from "~/env";
 import { getUserSession } from "~/lib/session";
 import PlaceholderAvatar from "public/placeholder-ava.jpg";
 import LogoSmall from "public/logo-s.svg";
-import Title from "../_components/Title";
-import Navbar from "../_components/Navbar";
+import Title from "../../components/Title";
+import Navbar from "../../components/Navbar";
 
 export default async function Volumes() {
   const user = await getUserSession();

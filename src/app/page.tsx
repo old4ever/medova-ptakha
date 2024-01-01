@@ -4,13 +4,14 @@ import process from "process";
 
 // import { CreatePost } from "~/app/_components/create-post";
 import { api } from "~/trpc/server";
-import MaxWidthWrapper from "./_components/MaxWidthWrapper";
+import MaxWidthWrapper from "../components/MaxWidthWrapper";
 import { object } from "zod";
 
-import ScrollRightButton from "./_components/scrollRight";
-import ScrollLeftButton from "./_components/scrollLeft";
-import Title from "./_components/Title";
-import Navbar from "./_components/Navbar";
+import ScrollRightButton from "../components/scrollRight";
+import ScrollLeftButton from "../components/scrollLeft";
+import Title from "../components/Title";
+// import Navbar from "../components/Navbar";
+import Navbar from "~/components/Navbar";
 
 type VolumeProps = {
   isLead: boolean;
