@@ -10,13 +10,13 @@ import { cn } from "~/lib/utils";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ["latin", "cyrillic"],
   variable: "--font-sans",
   display: "swap",
 });
 
-export const fancyFont = localFont({
+const fancyFont = localFont({
   src: "../../public/KrasnopysChebanyk-Regular.ttf",
   variable: "--font-fancy",
   display: "swap",
