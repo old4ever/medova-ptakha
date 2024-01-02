@@ -18,7 +18,7 @@ const Volume = ({
           src={img}
           alt={alt}
           placeholder="blur"
-          className="aspect-square h-full w-full object-cover object-top"
+          className="aspect-square max-h-32 object-cover object-top xsm:max-h-[none]"
         ></img>
         <p>{`вип. ${volumeNumber}`}</p>
       </div>

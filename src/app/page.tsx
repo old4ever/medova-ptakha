@@ -39,9 +39,9 @@ export default async function Home() {
             </button>
           </div>
 
-          <div className="flex gap-2 pt-4">
+          <div className="flex flex-col gap-2 pt-4 xsm:flex-row">
             <Volume
-              className="min-w-[100px] basis-[30%]"
+              className="basis-[30%] xsm:min-w-[75px] "
               img="/volume-1.jpg"
               volumeNumber={1}
             />
