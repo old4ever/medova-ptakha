@@ -14,6 +14,7 @@ import Title from "../components/Title";
 import Navbar from "~/components/Navbar";
 import VolumesCarousel from "~/components/VolumesCarousel";
 import Volume from "~/components/Volume";
+import AuthorsCarousel from "~/components/AuthorsCarousel";
 
 const isDevEnv = env.NODE_ENV === "development" || env.NODE_ENV === "test";
 
@@ -69,28 +70,8 @@ export default async function Home() {
         </div>
         <div className="pt-8">
           <div className="text-4xl">Нашi автори</div>
-          <div className="flex items-center justify-center gap-1 pt-4">
-            <ScrollLeftButton />
-            <div className="wrapper grid auto-cols-[33%] grid-flow-col gap-4 overflow-x-scroll sm:auto-cols-[15%]">
-              {Array.from(Array(15)).map((_el, index) => {
-                return (
-                  <div
-                    className="flex flex-col items-center justify-center"
-                    key={index}
-                  >
-                    <img
-                      className="aspect-square w-full rounded-full border border-black object-cover object-top"
-                      // height={128}
-                      // width={128}
-                      alt="Profile Picture"
-                      src="/placeholder-ava.jpg"
-                    />
-                    <div>{`Автор ${index}`}</div>
-                  </div>
-                );
-              })}
-            </div>
-            <ScrollRightButton />
+          <div className="flex w-full items-center justify-center px-12 pt-4">
+            <AuthorsCarousel />
           </div>
           <div className=""></div>
         </div>
