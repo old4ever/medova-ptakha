@@ -20,7 +20,7 @@ const Title = ({ subheading }: { subheading?: string }) => {
 
   return (
     <>
-      <div className="flex items-center justify-center bg-primary px-12 pb-9 pt-9 font-fancy">
+      <div className="font-fancy flex items-center justify-center bg-primary px-12 pb-9 pt-9">
         <span className="pr-5 pt-4 text-4xl sm:pr-6 sm:text-7xl md:pr-7 lg:pr-8">
           Медова
         </span>
@@ -30,7 +30,7 @@ const Title = ({ subheading }: { subheading?: string }) => {
         <span className="pl-2 pt-4 text-4xl sm:text-7xl">Птаха</span>
       </div>
       {subheading && (
-        <div className="flex items-center justify-center bg-primary font-fancy">
+        <div className="font-fancy flex items-center justify-center bg-primary">
           {/* <span className="mt-[-3rem] pl-16 text-4xl sm:ml-6 sm:mt-[-2rem] sm:pb-4 sm:pl-0 sm:text-7xl md:ml-7  lg:ml-8"> */}
           <span className="mt-[-1rem] pb-4 pl-4 text-4xl sm:text-5xl md:ml-7 lg:ml-8">
             {subheading}

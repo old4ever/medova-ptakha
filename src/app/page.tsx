@@ -4,51 +4,17 @@ import process from "process";
 
 // import { CreatePost } from "~/app/_components/create-post";
 import { api } from "~/trpc/server";
-import MaxWidthWrapper from "./_components/MaxWidthWrapper";
+import MaxWidthWrapper from "../components/MaxWidthWrapper";
 import { object } from "zod";
 
-import ScrollRightButton from "./_components/scrollRight";
-import ScrollLeftButton from "./_components/scrollLeft";
-import Title from "./_components/Title";
-import Navbar from "./_components/Navbar";
-
-type VolumeProps = {
-  isLead: boolean;
-  img: string;
-  alt?: string;
-  volumeNumber?: number;
-  className?: string;
-};
-
-const Volume = ({
-  img,
-  alt,
-  // isLead,
-  volumeNumber = 1,
-  className,
-}: VolumeProps) => {
-  // let dimensions = "basis-[100%]";
-  // if (isLead) {
-  //   dimensions = "basis-[120%]";
-  // }
-  return (
-    <div className={className}>
-      {/* <div className={`${dimensions} flex flex-col`}> */}
-      <div className="flex flex-col">
-        <div>
-          <img
-            src={img}
-            alt={alt ? alt : "volume cover"}
-            placeholder="blur"
-            className="aspect-square h-full w-full object-cover object-top"
-            // objectPosition="center"
-          ></img>
-        </div>
-        <div>{`вип. ${volumeNumber}`}</div>
-      </div>
-    </div>
-  );
-};
+import ScrollRightButton from "../components/ui/scrollRightArrow";
+import ScrollLeftButton from "../components/ui/scrollLeftArrow";
+import Title from "../components/Title";
+// import Navbar from "../components/Navbar";
+import Navbar from "~/components/Navbar";
+import VolumesCarousel from "~/components/VolumesCarousel";
+import Volume from "~/components/Volume";
+import AuthorsCarousel from "~/components/AuthorsCarousel";
 
 const isDevEnv = env.NODE_ENV === "development" || env.NODE_ENV === "test";
 
@@ -73,47 +39,16 @@ export default async function Home() {
             </button>
           </div>
 
-          <div className="flex gap-2 pt-4">
+          <div className="flex flex-col gap-2 pt-4 xsm:flex-row">
             <Volume
-              className="basis-[30%]"
-              isLead={true}
+              className="basis-[30%] xsm:min-w-[75px] "
               img="/volume-1.jpg"
               volumeNumber={1}
             />
 
-            <div className=" flex-grow basis-[40%]">
-              {/*   <div id="carousel" className="scroll-smooth"> */}
-              {/* <div className="grid grid-flow-col grid-cols-[1fr_5fr_5fr_5fr_1fr] gap-4"> */}
-              {/* <div className="grid grid-flow-col grid-cols-[1fr_1fr_1fr] gap-4"> */}
-              {/* <div className="grid grid-flow-col grid-cols-[repeat(3,33%)] gap-4"> */}
-              {/* <div className="grid grid-flow-col gap-4"> */}
-              {/* <div className="grid columns-3 grid-flow-col gap-4"> */}
-              {/* <div
-                className={`grid grid-flow-col grid-cols-[1fr,_repeat(${volumesCount},30%),_1fr] gap-4 overflow-x-scroll`}
-              > */}
-              {/* <div className="grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll"> */}
-              <div className="flex items-center justify-center gap-1">
-                <ScrollLeftButton />
-                <div className="wrapper grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll">
-                  <Volume
-                    isLead={false}
-                    img="/volume-2.jpeg"
-                    volumeNumber={2}
-                  />
-                  <Volume
-                    isLead={false}
-                    img="/volume-2.jpeg"
-                    volumeNumber={3}
-                  />
-                  <Volume
-                    isLead={false}
-                    img="/volume-2.jpeg"
-                    volumeNumber={4}
-                  />
-                  {/* <Volume isLead={false} img="/volume-2.jpeg" volumeNumber={5} /> */}
-                  {/* <Volume isLead={false} img="/volume-2.jpeg" volumeNumber={6} /> */}
-                </div>
-                <ScrollRightButton />
+            <div className="flex-grow basis-[40%]">
+              <div className="flex w-full items-center justify-center px-12">
+                <VolumesCarousel />
               </div>
             </div>
           </div>
@@ -135,28 +70,8 @@ export default async function Home() {
         </div>
         <div className="pt-8">
           <div className="text-4xl">Нашi автори</div>
-          <div className="flex items-center justify-center gap-1 pt-4">
-            <ScrollLeftButton />
-            <div className="wrapper grid auto-cols-[33%] grid-flow-col gap-4 overflow-x-scroll sm:auto-cols-[15%]">
-              {Array.from(Array(15)).map((_el, index) => {
-                return (
-                  <div
-                    className="flex flex-col items-center justify-center"
-                    key={index}
-                  >
-                    <img
-                      className="aspect-square w-full rounded-full border border-black object-cover object-top"
-                      // height={128}
-                      // width={128}
-                      alt="Profile Picture"
-                      src="/placeholder-ava.jpg"
-                    />
-                    <div>{`Автор ${index}`}</div>
-                  </div>
-                );
-              })}
-            </div>
-            <ScrollRightButton />
+          <div className="flex w-full items-center justify-center px-12 pt-4">
+            <AuthorsCarousel />
           </div>
           <div className=""></div>
         </div>
@@ -165,7 +80,7 @@ export default async function Home() {
           <a href={`mailto:${contactEmail}`} target="_blank">
             {contactEmail}
           </a>
-          <p>© Онлайн журнал “Медова Птаха” 2023</p>
+          <p>{`© Онлайн журнал “Медова Птаха" ${new Date().getFullYear()}`}</p>
         </footer>
       </MaxWidthWrapper>
       {isDevEnv && (
