@@ -80,7 +80,7 @@ export default async function Home() {
           <a href={`mailto:${contactEmail}`} target="_blank">
             {contactEmail}
           </a>
-          <p>© Онлайн журнал “Медова Птаха” 2023</p>
+          <p>{`© Онлайн журнал “Медова Птаха" ${new Date().getFullYear()}`}</p>
         </footer>
       </MaxWidthWrapper>
       {isDevEnv && (
