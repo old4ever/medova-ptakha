@@ -12,44 +12,8 @@ import ScrollLeftButton from "../components/ui/scrollLeftArrow";
 import Title from "../components/Title";
 // import Navbar from "../components/Navbar";
 import Navbar from "~/components/Navbar";
-
-type VolumeProps = {
-  isLead: boolean;
-  img: string;
-  alt?: string;
-  volumeNumber?: number;
-  className?: string;
-};
-
-const Volume = ({
-  img,
-  alt,
-  // isLead,
-  volumeNumber = 1,
-  className,
-}: VolumeProps) => {
-  // let dimensions = "basis-[100%]";
-  // if (isLead) {
-  //   dimensions = "basis-[120%]";
-  // }
-  return (
-    <div className={className}>
-      {/* <div className={`${dimensions} flex flex-col`}> */}
-      <div className="flex flex-col">
-        <div>
-          <img
-            src={img}
-            alt={alt ? alt : "volume cover"}
-            placeholder="blur"
-            className="aspect-square h-full w-full object-cover object-top"
-            // objectPosition="center"
-          ></img>
-        </div>
-        <div>{`вип. ${volumeNumber}`}</div>
-      </div>
-    </div>
-  );
-};
+import VolumesCarousel from "~/components/VolumesCarousel";
+import Volume from "~/components/Volume";
 
 const isDevEnv = env.NODE_ENV === "development" || env.NODE_ENV === "test";
 
@@ -76,45 +40,14 @@ export default async function Home() {
 
           <div className="flex gap-2 pt-4">
             <Volume
-              className="basis-[30%]"
-              isLead={true}
+              className="min-w-[100px] basis-[30%]"
               img="/volume-1.jpg"
               volumeNumber={1}
             />
 
-            <div className=" flex-grow basis-[40%]">
-              {/*   <div id="carousel" className="scroll-smooth"> */}
-              {/* <div className="grid grid-flow-col grid-cols-[1fr_5fr_5fr_5fr_1fr] gap-4"> */}
-              {/* <div className="grid grid-flow-col grid-cols-[1fr_1fr_1fr] gap-4"> */}
-              {/* <div className="grid grid-flow-col grid-cols-[repeat(3,33%)] gap-4"> */}
-              {/* <div className="grid grid-flow-col gap-4"> */}
-              {/* <div className="grid columns-3 grid-flow-col gap-4"> */}
-              {/* <div
-                className={`grid grid-flow-col grid-cols-[1fr,_repeat(${volumesCount},30%),_1fr] gap-4 overflow-x-scroll`}
-              > */}
-              {/* <div className="grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll"> */}
-              <div className="flex items-center justify-center gap-1">
-                <ScrollLeftButton />
-                <div className="wrapper grid auto-cols-[30%] grid-flow-col gap-4 overflow-x-scroll">
-                  <Volume
-                    isLead={false}
-                    img="/volume-2.jpeg"
-                    volumeNumber={2}
-                  />
-                  <Volume
-                    isLead={false}
-                    img="/volume-2.jpeg"
-                    volumeNumber={3}
-                  />
-                  <Volume
-                    isLead={false}
-                    img="/volume-2.jpeg"
-                    volumeNumber={4}
-                  />
-                  {/* <Volume isLead={false} img="/volume-2.jpeg" volumeNumber={5} /> */}
-                  {/* <Volume isLead={false} img="/volume-2.jpeg" volumeNumber={6} /> */}
-                </div>
-                <ScrollRightButton />
+            <div className="flex-grow basis-[40%]">
+              <div className="flex w-full items-center justify-center px-12">
+                <VolumesCarousel />
               </div>
             </div>
           </div>
